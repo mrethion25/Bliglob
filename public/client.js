@@ -41,10 +41,26 @@ function appendMessage(msg, type) {
 }
 
 // Recieve messages 
-socket.on('message', (msg) => {
-    appendMessage(msg, 'incoming')
-    scrollToBottom()
-})
+
+// 1️⃣ RECEIVE HISTORY FIRST (last 100 messages)
+socket.on("messageHistory", (history) => {
+    history.forEach(msg => {
+        appendMessage(msg, "incoming");
+    });
+});
+
+// 2️⃣ THEN RECEIVE LIVE MESSAGES
+socket.on("message", (msg) => {
+    appendMessage(msg, "incoming");
+});
+
+// 3️⃣ YOUR SEND MESSAGE CODE HERE
+textarea.addEventListener("keyup", (e) => {
+    if (e.key === "Enter" && textarea.value.trim() !== "") {
+        sendMessage(textarea.value);
+        textarea.value = "";
+    }
+});
 
 function scrollToBottom() {
     messageArea.scrollTop = messageArea.scrollHeight
