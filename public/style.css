@@ -122,3 +122,67 @@ textarea {
     background: rgba(0,0,0,0.3);
     border-radius: 20px;
 }
+/* Theme Toggle Button */
+.theme-btn {
+    margin-left: auto;
+    background: rgba(255,255,255,0.7);
+    border: none;
+    padding: 8px 14px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.theme-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Input + Send Button Row */
+.input-area {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+}
+
+.send-btn {
+    padding: 10px 14px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 12px;
+    border: none;
+    background: rgba(255,255,255,0.9);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: 0.2s ease;
+}
+.send-btn:hover {
+    transform: scale(1.1);
+}
+
+/* DARK MODE STYLES */
+.dark-mode {
+    color: white;
+}
+
+.dark-mode section.chat__section {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode .brand {
+    background: rgba(255,255,255,0.1);
+}
+
+.dark-mode textarea {
+    background: rgba(255,255,255,0.15);
+    color: white;
+}
+
+.dark-mode .incoming {
+    background: rgba(255,255,255,0.2);
+    color: white;
+}
+
+.dark-mode .outgoing {
+    background: rgba(0,0,0,0.4);
+    color: white;
+        }
