@@ -35,7 +35,7 @@ io.on('connection', (socket) => {
         }
 
         // send to all users
-        io.emit("message", msg);
+        socket.broadcast.emit("message", msg);
     });
 });
 
