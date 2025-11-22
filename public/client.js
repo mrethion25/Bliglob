@@ -1,10 +1,21 @@
 const socket = io()
-let name;
 let textarea = document.querySelector('#textarea')
 let messageArea = document.querySelector('.message__area')
-do {
-    name = prompt('Please enter your username: ')
-} while(!name)
+let name = "";
+
+// Show modal
+const modal = document.getElementById("usernameModal");
+const input = document.getElementById("usernameInput");
+const submitBtn = document.getElementById("usernameSubmit");
+
+// On button click
+submitBtn.addEventListener("click", () => {
+    const username = input.value.trim();
+    if (username.length > 0) {
+        name = username;
+        modal.style.display = "none";   // hide modal
+    }
+});
 
 textarea.addEventListener('keyup', (e) => {
     if(e.key === 'Enter') {
