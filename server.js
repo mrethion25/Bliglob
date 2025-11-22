@@ -1,3 +1,4 @@
+let messageHistory = []; // stores last 100 messages
 const express = require('express')
 const app = express()
 const http = require('http').createServer(app)
@@ -18,9 +19,19 @@ app.get('/', (req, res) => {
 const io = require('socket.io')(http)
 
 io.on('connection', (socket) => {
+   socket.emit("messageHistory", messageHistory);
     console.log('Connected...')
-    socket.on('message', (msg) => {
-        socket.broadcast.emit('message', msg)
-    })
+socket.on("message", (msg) => {
+    // save message
+    messageHistory.push(msg);
+
+    // keep only last 100
+    if (messageHistory.length > 100) {
+        messageHistory.shift();
+    }
+
+    // broadcast to others
+    socket.broadcast.emit("message", msg);
+});
 
 })
