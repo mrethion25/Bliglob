@@ -50,4 +50,31 @@ function scrollToBottom() {
     messageArea.scrollTop = messageArea.scrollHeight
 }
 
+// THEME SWITCHING
+const themeToggle = document.getElementById("themeToggle");
 
+if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark-mode");
+    themeToggle.textContent = "☀️";
+}
+
+themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+    if (document.body.classList.contains("dark-mode")) {
+        themeToggle.textContent = "☀️";
+        localStorage.setItem("theme", "dark");
+    } else {
+        themeToggle.textContent = "🌙";
+        localStorage.setItem("theme", "light");
+    }
+});
+
+// SEND BUTTON SUPPORT
+const sendBtn = document.getElementById("sendBtn");
+sendBtn.addEventListener("click", () => {
+    let message = textarea.value.trim();
+    if (message.length > 0) {
+        sendMessage(message); // already exists in your code
+        textarea.value = "";
+    }
+});
